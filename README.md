@@ -6,3 +6,5 @@ To run it you should:
   1. Create a virtual environment: `python3 -m venv venv_name`;
   2. Install requirements: `pip3 install -r requirements.txt`
   3. Run: `flask run`
+
+Live demo: https://deeper-systems-theme-score.herokuapp.com/
