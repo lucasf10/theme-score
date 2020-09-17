@@ -1,10 +1,12 @@
 from flask import Flask
 from views import home, themes, vote_thumbs_up, vote_thumbs_down
 from models import db
+from os import environ
 
 app = Flask(__name__)
 
-app.config['MONGODB_HOST'] = 'mongodb://localhost:27017/theme-score_db'
+app.config['MONGODB_HOST'] = environ.get('MONGODB_HOST', '')
+app.config['SECRET_KEY'] = environ.get('SECRET_KEY', '')
 app.debug = True
 
 db.init_app(app)
