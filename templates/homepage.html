@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<main>
+
+    <h2>Videos</h2>
+
+    {% if videos %}
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Theme</th>
+                <th>Vote</th>
+                <th>Score</th>
+            </tr>
+            {% for video in videos %}
+                <tr>
+                    <td>{{ video.title }}</td>
+                    <td>{{ video.theme.name }}</td>
+                    <td class="vote">
+                        <form action="{{ url_for('vote_thumbs_up', video_id=video.id) }}" method="post">
+                            <button name="vote_thumbs_up" type="submit">
+                                <i class="icon-thumbs-up"></i>
+                            </button>
+                            <span>{{ video.thumbs_up }}</span>
+                        </form>
+                        <form action="{{ url_for('vote_thumbs_down', video_id=video.id) }}" method="post">
+                            <button name="vote_thumbs_down" type="submit">
+                                <i class="icon-thumbs-down"></i>
+                            </button>
+                            <span>{{ video.thumbs_down }}</span>
+                        </form>
+                    </td>
+                    <td>{{ video.score }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <div class="not-added-message">No videos yet.</div>
+    {% endif %}
+</main>
+
+<aside>
+
+    <h2>Add video</h2>
+
+    <form action="{{ url_for('home') }}" method="post">
+        <p>
+            <label for="video_title">Video Title: </label>
+            <input type="text" name="video_title" required>
+        </p>
+        <p>
+            <label for="video_title">Theme Name: </label>
+            <input type="text" name="theme_name" required>
+        </p>
+        <p>
+            <input type="submit" value="Add">
+        </p>
+    </form>
+
+    {% if message %}
+        <div class="response-text-add-video">
+            <span>{{ message }}</span>
+        </div>
+    {% endif %}
+</aside>
+
+{% endblock %}

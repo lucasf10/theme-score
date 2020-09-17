@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Themes{% endblock %}
+
+{% block content %}
+
+<main class="full-main">
+    <h2>Themes</h2>
+
+    {% if themes %}
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+            {% for theme in themes %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ theme.name }}</td>
+                    <td>{{ theme.score }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <div class="not-added-message">No videos yet.</div>
+    {% endif %}
+</main>
+
+{% endblock %}
