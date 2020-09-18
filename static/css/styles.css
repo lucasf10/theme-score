@@ -65,7 +65,7 @@ main {
 aside {
     width: 30%;
     border-left: 1px dotted #ccc;
-    padding-left: 20px;
+    padding: 0 20px;
 }
 
 main h2 {
@@ -182,4 +182,37 @@ main.full-main {
 
 .not-added-message {
     text-align: center;
+}
+
+@media (max-width: 999px) {
+    .container {
+        width: 100%;
+    }
+
+    header {
+        padding: 30px;
+    }
+
+    .main-aside-wrapper {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    main,
+    main.full-main {
+        width: calc(100% - 80px);
+    }
+
+    aside {
+        border-bottom: 1px dotted #ccc;
+        border-left: none;
+        width: 300px;
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+    }
+
+    footer {
+        padding: 30px;
+    }
 }
